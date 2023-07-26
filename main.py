@@ -169,17 +169,17 @@ def datos(Cantidad, qr_model, name):
 	Lote = "{}{}".format(year,week)
 
 	try:
-			Time = ''
-			Time = ctime()
-			a = buscar_vacia(sheet1)
-			sheet1.update_cell(a, 1, Time)
-			sheet1.update_cell(a, 2, name)
-			sheet1.update_cell(a, 3, int(Cantidad))
-			sheet1.update_cell(a, 4, qr_model)
-			sheet1.update_cell(a, 5, Lote)
+		Time = ''
+		Time = ctime()
+		a = buscar_vacia(sheet1)
+		sheet1.update_cell(a, 1, Time)
+		sheet1.update_cell(a, 2, name)
+		sheet1.update_cell(a, 3, int(Cantidad))
+		sheet1.update_cell(a, 4, qr_model)
+		sheet1.update_cell(a, 5, Lote)
 
-			Aviso_pop("Hecho")
-			qr_model = ' '
+		Aviso_pop("Hecho")
+		qr_model = ' '
 
 	except (ValueError, NameError, TypeError):
 		error("Error! Avisar al encargado")
