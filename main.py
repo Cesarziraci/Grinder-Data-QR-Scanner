@@ -35,7 +35,11 @@ Builder.load_string('''
 		Camera:
 			id: camera
 			resolution: (640, 480)
-			play: False       
+			play: False
+   			canvas.before:
+      				Rotate:
+	  				angle: -90
+       					origin: self.center
 <Molino>:
 	GridLayout:
 		cols:1
@@ -240,7 +244,8 @@ class CameraScreen(Screen):
 		image_data = self.camera.texture.pixels
 		width, height = self.camera.resolution
 		image = Image.frombytes(mode='RGBA', size=(width, height), data=image_data)
-		decoded_qr_codes = decode(image)
+		image_flip = image.transpose(Image.FLIP_LEFT_RIGHT)
+		decoded_qr_codes = decode(image_flip)
 
 		if not self.qr_detected and len(decoded_qr_codes) > 0:
 			qr_code_data = decoded_qr_codes[0].data.decode('utf-8')
